@@ -11,7 +11,28 @@
       Il existe 6 niveaux de titres : de h1 à h6
     -->
     <h1>Actualités</h1>
-    <p>N'importe quoi qui est quand un même un petit peu long pour faire genre.</p>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="https://github.com/" target="_blank"
+            >Lien texte vers Github</a
+          >
+        </li>
+        <li>
+          <a href="https://www.bloomberg.com/" target="_blank">
+            <img
+              src="https://github.githubassets.com/images/modules/site/logos/bloomberg-logo.png"
+              alt="Bloomberg logo"
+            />
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <p>
+      N'importe quoi qui est quand un même un petit peu long pour faire genre.
+    </p>
     <p>
       Un autre texte un peu moins long.
       <!-- br est une balise auto fermante -->
@@ -26,7 +47,16 @@
     <p>
       Illustrons ce magnifique texte :
       <br />
+      <!-- Chemin relatif -->
       <img src="images/composants-reactjs.png" alt="Ma super image" />
+    </p>
+
+    <p>
+      <!-- Chemin absolu -->
+      <img
+        src="https://github.githubassets.com/images/modules/site/logos/bloomberg-logo.png"
+        alt="Bloomberg logo"
+      />
     </p>
   </body>
 </html>
