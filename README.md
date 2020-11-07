@@ -148,3 +148,111 @@ On utilisera, dans un premier temps, 2 attributs dans la balise `a` :
 ```
 
 >Le contenu affiché à l'écran se trouve entre le tag d'ouverture et le tag de fermeture
+
+## CSS
+
+Comme on l'a déjà vu, le langage HTML nous permet de **structurer** notre page. Nous définissons une **arborescence** d'éléments.
+
+Le langage CSS nous permet, quant à lui, de **changer l'apparence** de tout ou partie de ces éléments.
+
+Par exemple : changer la couleur de la police, de l'arrière-plan, ajouter des bordures, créer des animations, etc...
+
+>**En CSS, nous allons donc cibler des éléments HTML et les styliser avec des règles CSS**
+
+### Position de la feuille de style CSS
+
+Le CSS qui vient styliser une page peut s'écrire :
+
+- Soit dans la page HTML
+- Soit dans un fichier CSS séparé
+
+La pratique la plus répandue est la seconde, car elle présente une meilleure séparation du code. C'est celle que nous étudierons dans ce module en majorité, avec peut-être quelques exceptions quand ce sera nécessaire.
+
+### Syntaxe du langage CSS
+
+Comme indiqué précédemment, le CSS nous permet de **cibler** des éléments pour les styliser.
+
+Pour cibler un élément, nous devons utiliser un **sélecteur**.
+
+Une fois le sélecteur déclaré, nous ouvrons un **bloc de règles** encadré par des **accolades** (`{` et `}`).
+
+Pour chaque règle du bloc de règles, je fixe une **valeur**.
+
+Si je souhaite écrire des commentaires, les encadre par `/*` et `*/`.
+
+```css
+/*
+Ceci est un commentaire, qui me permet d'inscrire directement dans le code du contenu lisible par n'importe qui
+*/
+body { /* <-- "body" est un sélecteur */
+  font-weight: 400; /* <-- "font-weight" est une règle */
+  font-family: sans-serif; /* <-- "font-family" est une règle */
+}
+```
+
+### Les sélecteurs CSS
+
+Il existe une multitude de sélecteurs en CSS, nous n'en explorerons que quelques-uns dans ce module.
+
+Si vous souhaitez consulter la liste des sélecteurs CSS, vous pouvez cliquez [ici](https://www.w3schools.com/cssref/css_selectors.asp).
+
+Ci-dessous, un tableau qui sera mis à jour régulièrement, contenant le résumé des sélecteurs vus en cours :
+
+|Sélecteur|Description|
+|---|---|
+|`balise`|Sélectionne tous les éléments qui sont des balises HTML ayant ce nom|
+|`#id`|Sélectionne l'élément ayant un attribut `id`|
+|`element1 element2`|Sélectionne tous les éléments `element2` étant quelque part dans les enfants de l'élément `element1`|
+
+#### Sélectionner une balise HTML
+
+En CSS, il est possible de sélectionner une balise HTML directement.
+
+Par "élément HTML", nous entendons toute balise **standard** telle qu'on va pouvoir les utiliser dans la structure de notre page (`p`, `body`, `img`, etc...).
+
+>Pour sélectionner un élément HTML et lui appliquer des styles, il suffit d'indiquer son nom
+
+```css
+p {
+  color: red; /* Je change la couleur de tous les paragraphes à rouge */
+}
+```
+
+#### Sélectionner un élément ayant un identifiant
+
+Nous avons vu qu'en HTML, il était possible d'ajouter un attribut `id` à n'importe quel élément, comme pour le nommer, en quelque sorte. Il doit être unique dans toute la page.
+
+Cet `id` peut nous permettre de cibler précisément un élément dans la page en CSS.
+
+>Il suffit de reprendre son nom, et de le préfixer par `#`
+
+HTML :
+
+```html
+<!-- ... -->
+<p id="introduction">
+  <!-- ... -->
+</p>
+<!-- ... -->
+```
+
+```css
+#introduction {
+  font-size: 26px; /* Je change la taille du texte de ce paragraphe uniquement */
+}
+```
+
+#### Sélectionner un élément HTML se trouvant dans un autre élément HTML
+
+Il est possible de vouloir sélectionner un élément se trouvant être un enfant d'un autre élément, sans forcément vouloir passer par un ID.
+
+>Dans ce cas, on peut indiquer le sélecteur du parent et le sélecteur de l'enfant, séparés par un espace
+
+```css
+/*
+Attention : ici je sélectionne TOUS les éléments <ul> se trouvant quelque part dans les enfants de TOUS les éléments <nav>. C'est pour ça que nous avons la possibilité d'être encore plus fins, plus spécifiques, avec la sélection par ID par exemple
+*/
+nav ul {
+  list-style-type: none;
+}
+```
