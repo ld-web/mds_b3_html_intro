@@ -1,0 +1,24 @@
+/*
+Je définis des styles généraux pour le corps de ma page : body
+Je peux donc utiliser le sélecteur de balise HTML car je n'ai qu'une balise body
+dans ma page.
+Le sélecteur de balise HTML consiste simplement à écrire le nom de la balise, sans préfixe, sans suffixe, ni rien d'autre. Juste le nom de la balise.
+Le règles CSS que je souhaite appliquer à ma balise body se trouveront donc entre les accolades.
+*/
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 55px;
+  text-align: center;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+#main-menu ul {
+  list-style-type: none;
+}

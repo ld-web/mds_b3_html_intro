@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <title>Le Japon</title>
+    <!--
+      Je crée un lien vers un fichier CSS dans ce fichier HTML
+      Avec l'attribut href, je désigne la cible (donc le fichier à lier)
+      Avec rel, j'indique au navigateur le type de relation qu'à notre fichier HTML avec ce fichier CSS
+      ==> Ici, on indique qu'il s'agit d'une feuille de style
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="jp.css" rel="stylesheet" />
   </head>
   <body>
-    <nav>
+    <nav id="main-menu">
       <ul>
         <li>Présentation</li>
         <li>Illustrations</li>
