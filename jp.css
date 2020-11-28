@@ -74,5 +74,13 @@ h2 {
 .quote {
   color: #aaa;
   padding-left: 1em;
-  border-left: 4px solid #68c3ff;
+  border-left: 4px solid #000;
+}
+
+.quote-blue {
+  border-left-color: #68c3ff;
+}
+
+.quote-red {
+  border-left-color: #ff4d4d;
 }
