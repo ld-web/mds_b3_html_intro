@@ -203,6 +203,8 @@ Ci-dessous, un tableau qui sera mis à jour régulièrement, contenant le résum
 |`balise`|Sélectionne tous les éléments qui sont des balises HTML ayant ce nom|
 |`#id`|Sélectionne l'élément ayant un attribut `id`|
 |`element1 element2`|Sélectionne tous les éléments `element2` étant quelque part dans les enfants de l'élément `element1`|
+|`elem1, elem2`|Sélectionne l'`elem1` et l'`elem2` pour leur appliquer les mêmes règles|
+|`.maClasse`|Sélectionne les éléments ayant la classe `maClasse`|
 
 #### Sélectionner une balise HTML
 
@@ -256,3 +258,349 @@ nav ul {
   list-style-type: none;
 }
 ```
+
+#### Sélectionner plusieurs types éléments
+
+On peut vouloir appliquer la même règle à plusieurs types d'éléments. Dans ce cas, il suffit de séparer les sélecteurs de ces différents éléments par une virgule.
+
+```css
+/*
+Ici, on passe les titres de premier ET de second niveau en majuscules. On peut utiliser n'importe quel sélecteur, pas que des balises HTML
+*/
+h1, h2 {
+  text-transform: uppercase;
+}
+```
+
+#### Sélectionner un ou plusieurs éléments ayant une classe
+
+En CSS, on peut définir des **classes**, ce qui permet de disposer de styles réutilisables, là où nous disions que les ID, en revanche, devaient rester uniques dans une page.
+
+Ainsi, il est possible de définir des classes d'affichage, plus générales, et utilisables sur plusieurs éléments d'une même page.
+
+Par exemple, si je souhaite pouvoir styliser certains paragraphes de ma page comme des citations :
+
+> Définition de la classe CSS
+
+```css
+.quote {
+  color: #aaa;
+  padding-left: 1em;
+  border-left: 4px solid #68c3ff;
+}
+```
+
+> Application dans la page HTML
+
+```html
+<p>
+  Lorem ipsum dolor sit, amet consectetur adipisicing...
+</p>
+<p class="quote">
+  Tempora accusantium necessitatibus provident perspiciatis, laborum iure
+  qui deserunt distinctio. Necessitatibus, numquam inventore
+</p>
+<p>
+  Consequatur excepturi, adipisci, iure autem reiciendis ad asperiores
+</p>
+<p class="quote">
+  lorem
+</p>
+```
+
+Tous les éléments ayant la classe "quote" verront le style de la classe appliqué :
+
+![Quote class 1](docs/quote_class_1.png "Quote class 1")
+
+**Note : on peut définir plusieurs classes pour un élément**.
+
+En effet, il serait aussi possible de définir plusieurs classes pour cumuler plusieurs styles, ou bien dériver un style.
+
+Reprenons l'exemple de nos citations.
+
+Si je souhaite créer un nouveau type de citation qui a une couleur de bordure différente (à gauche), alors je peux conserver le style de base d'une citation dans une classe `quote`, puis créer des classes spécifiques pour la couleur voulue :
+
+> CSS
+
+```css
+.quote {
+  color: #aaa;
+  padding-left: 1em;
+  /* Je définis une bordure de base, appliquée pour une citation */
+  border-left: 4px solid #000;
+}
+
+.quote-blue {
+  /* Si j'applique cette classe, la bordure passera en bleu */
+  border-left-color: #68c3ff;
+}
+
+.quote-red {
+  /* Et ici, en rouge */
+  border-left-color: #ff4d4d;
+}
+```
+
+Ensuite, je peux appliquer ces styles sur les éléments HTML voulus :
+
+```html
+<p>
+  Lorem ipsum dolor sit
+</p>
+<!-- J'inscris plusieurs classes -->
+<p class="quote quote-blue">
+  Tempora accusantium necessitatibus
+</p>
+<p>
+  Consequatur excepturi
+</p>
+<p class="quote quote-red">
+  Nobis iusto, debitis voluptates
+</p>
+<p>
+  Ad, aliquam aspernatur quos rerum iste non numquam tenetur quae
+  dignissimos voluptatem cumque doloribus corrupti sequi unde eaque ullam!
+</p>
+<p class="quote">
+  Ad, aliquam aspernatur
+</p>
+```
+
+![Quote class 2](docs/quote_class_2.png "Quote class 2")
+
+### Flexbox
+
+Le modèle Flexbox, appliqué à un élément, permet de contrôler la manière dont vont être distribués ses enfants (horizontalement, verticalement).
+
+Exemple :
+
+Je dispose d'un menu avec ma balise `nav`, contenant une liste non ordonnée `ul` de liens.
+
+Par défaut, ma liste s'affiche **verticalement**, les éléments sont les uns en-dessous des autres.
+
+Une solution possible pour rendre mon menu **horizontal**, est d'appliquer le modèle Flexbox à la balise `ul`. Ainsi, nous allons pouvoir configurer la distribution des `li` qu'elle contient.
+
+L'application du modèle Flexbox s'effectue par la propriété `display` :
+
+```css
+#main-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* Application Flexbox */
+  display: flex;
+  /* Comment distribuer les enfants ? Ici, horizontalement (row = ligne) */
+  flex-direction: row;
+  /* Comment aligner les enfants horizontalement ? */
+  justify-content: space-evenly;
+}
+```
+
+> Nous n'avons pas eu à spécifier de règle supplémentaire pour les éléments `li` contenus dans la liste
+
+### Marges, bordures
+
+Tout élément HTML, dans un navigateur, va être constitué de différentes parties. De l'intérieur vers l'extérieur :
+
+- Le contenu
+- Les marges intérieures (`padding`)
+- Les bordures (`border`)
+- Les marges extérieures (`margin`)
+
+![HTML element](docs/html_elem_apparence.png "HTML element")
+
+Ainsi, il est possible d'agir sur ces différentes parties via des règles CSS.
+
+> Chaque élément possède 4 côtés (top, left, bottom, right). Les règles CSS que nous allons voir sont donc extensibles à chacun de ces côtés
+
+#### Contenu
+
+Pour agir sur le contenu, nous avons déjà exploré quelques règles CSS : `font-size`, `color`, etc...ce sont ces règles qui vont changer l'apparence des contenus.
+
+#### Marges intérieures (`padding`)
+
+Il est possible d'augmenter ou diminuer les marges intérieures d'un élément avec la propriété `padding`.
+
+Agir sur cette marge peut être utile pour aérer les contenus. Si j'ai fixé une couleur d'arrière-plan pour mon élément, alors augmenter les marges intérieures va me permettre d'espacer mes contenus de la bordure.
+
+On peut utiliser `padding` pour fixer une marge intérieure qui s'appliquera à tous les côtés, sinon on peut utiliser `padding-top`, `padding-left`, `padding-bottom` et `padding-right` pour fixer la marge intérieure d'un côté uniquement.
+
+```css
+#main-menu {
+  /* ... */
+  padding-top: 1em;
+  padding-bottom: 1em;
+  /* ... */
+}
+```
+
+![padding](docs/padding.png "padding")
+
+#### Bordures (`border`)
+
+Les bordures permettent d'encadrer un élément. La règle `border` permet de fixer une bordure. On retrouvera donc les règles `border-top`, `border-left`, `border-bottom` et `border-right` pour ajouter une bordure d'un seul côté.
+
+Nous avons utilisé la règle `border` pour construire notre classe **quote** :
+
+```css
+.quote {
+  /* ... */
+  border-left: 4px solid #000;
+}
+```
+
+![border](docs/border.png "border")
+
+#### Marge extérieures (`margin`)
+
+Les marges extérieures sont utiles pour espacer les éléments HTML. Elles nous aident également à aérer nos contenus.
+
+Elles peuvent également nous aider à ajuster les styles par défaut appliqués par le navigateur, par exemple sur l'élément racine `body`.
+
+En effet, avec Google Chrome par exemple, quand nous construisons une page, l'élément `body` a automatiquement un `margin` appliqué par le navigateur, pour éviter que les contenus ne soient collés au bord de la page :
+
+![margin_default](docs/margin_default.png "margin_default")
+
+Nous pouvons corriger cet affichage en appliquant la valeur `0` à toutes les marges extérieures :
+
+```css
+body {
+  margin: 0;
+}
+```
+
+![margin_0](docs/margin_0.png "margin_0")
+
+Il ne faut pas oublier l'intérêt des marges extérieures pour aérer les contenus, par exemple pour un titre principal :
+
+![margin_h1](docs/margin_h1.png "margin_h1")
+
+### Positionnement
+
+Chaque élément HTML a une un **positionnement** dans la page.
+
+Le positionnement par défaut est **static**. Cela signifie simplement que tous les éléments vont s'afficher les uns après les autres.
+
+Il est possible d'ajuster la manière dont un élément doit être positionné avec la règle `position`.
+
+Par exemple, si je souhaite que mon menu reste "collé" en haut de page, je peux lui appliquer le positionnement `fixed` :
+
+```css
+#main-menu {
+  /* ... */
+  position: fixed;
+  /* ... */
+}
+```
+
+![menu_fixed_1](docs/menu_fixed_1.png "menu_fixed_1")
+
+Quand on applique le positionnement `fixed` à un élément, il est nécessaire d'utiliser d'autres règles CSS pour indiquer précisément au navigateur la manière dont on souhaite afficher l'élément.
+
+Pour notre menu, en l'occurence, on souhaite qu'il occupe toute la largeur de la page, et qu'il soit situé tout en haut de la page, comme "collé".
+
+Il faut donc ajouter les règles `width` (largeur) et `top` (distance avec le haut) avec les valeurs adéquates :
+
+```css
+#main-menu {
+  /* ... */
+  position: fixed;
+  /* Pour qu'il occupe 100% de la largeur */
+  width: 100%;
+  /* Pour qu'il soit à une distance de 0 du haut, donc collé */
+  top: 0;
+  /* ... */
+}
+```
+
+![menu_fixed_2](docs/menu_fixed_2.png "menu_fixed_2")
+
+### Contrôler la largeur des contenus, centrer les contenus
+
+Par défaut, nos contenus vont occuper toute la largeur de la page.
+
+Ce n'est pas la meilleure option pour le confort de lecture des utilisateurs. Les lignes seraient trop longues à parcourir.
+
+![content_full_width](docs/content_full_width.png "content_full_width")
+
+Pour contrôler la largeur des contenus, une option possible est de les englober dans une balise, dont nous allons ensuite limiter la largeur, et centrer.
+
+> Jusqu'à présent, les balises que nous avons vues avaient toutes un rôle, un but particulier. Par exemple, `a` permet de faire un lien hypertexte, `p` un paragraphe, `h1` un titre de premier niveau, etc...Ici, nous voulons englober nos contenus, donc nous avons besoin d'une balise plus **généraliste**. En HTML, la balise correspondant à ce besoin est `div`. Elle va nous aider à **diviser** nos contenus en différentes parties, pour pouvoir les styliser ensuite selon nos besoins, sans qu'elle ait une signification aussi forte qu'un titre, un paragraphe, une navigation, etc...
+
+```html
+<!-- ... -->
+<body>
+  <!-- ... -->
+  <div id="content">
+    <!-- ... -->
+  </div>
+  <!-- ... -->
+</body>
+<!-- ... -->
+```
+
+La balise `div` avec l'id "content" va donc contenir des éléments ayant une signification plus forte : les différentes sections de notre page.
+
+Dans notre fichier CSS, nous pouvons indiquer une largeur à notre zone de contenu avec la règle `width`. Nous pouvons également lui indiquer une **largeur maximale** avec `max-width`, ce qui nous permettra aux contenus de s'adapter à des écrans plus petits.
+
+Enfin, pour centrer notre conteneur, nous pouvons utiliser la propriété `margin` avec la valeur `auto`.
+
+```css
+#content {
+  /*
+  Largeur maximale : 900px
+  Si on est en-dessous de 900px, le texte reviendra à la ligne et s'adaptera
+  */
+  max-width: 900px;
+  /*
+  margin: auto nous permet de centrer l'élément
+  => les marges extérieures sont calculées automatiquement
+  */
+  margin: auto;
+}
+```
+
+![content_margin_auto](docs/content_margin_auto.png "content_margin_auto")
+
+### L'unité de mesure relative
+
+Pour spécifier des tailles en CSS, nous avons souvent utilisé l'unité de mesure `px`, le pixel.
+
+Il peut être intéressant d'utiliser cette unité. Cependant, il s'agit d'une unité **absolue**. Si nous n'indiquons que des valeurs absolues dans notre fichier CSS, il peut devenir compliqué, sur le long terme, de mettre à jour les styles et que tous les éléments gardent la même échelle de taille entre eux.
+
+C'est pourquoi nous allons préférer l'utilisation d'unités de mesure **relatives**, quand c'est possible.
+
+L'idée est simple : être en mesure de spécifier des valeurs **relatives** pour nos tailles de police, de marges, de largeur, etc...dès que possible, nous permettra de mettre à jour nos styles plus rapidement et plus efficacement dès qu'on en aura besoin.
+
+> Cela ne signifie pas qu'il faut arrêter d'utiliser `px`. Quelquefois nous aurons besoin de spécifier une taille fixe, en pixels (une taille de bordure par exemple)
+
+Prenons l'exemple de la taille de police. Un navigateur applique une taille de police par défaut pour les contenus (Google Chrome : 16px par exemple).
+
+L'unité de mesure `em` nous permet d'exprimer nos tailles de police **relativement** à l'élément parent le plus proche spécifiant une taille.
+
+Si nous n'avons spécifié aucune taille de police dans notre fichier, alors les tailles de police exprimées en `em` se baseront sur cette taille de base de 16px.
+
+Sinon, nous pouvons décider d'indiquer au navigateur une taille de base (en pixels) dans notre élément racine `body`, par exemple :
+
+```css
+body {
+  font-size: 18px;
+}
+```
+
+Puis, pour nos titres de premier niveau, une taille relative :
+
+```css
+h1 {
+  /* On peut utiliser des nombres décimaux pour être plus précis */
+  font-size: 3.2em;
+}
+```
+
+Ainsi :
+
+![h1_fontsize](docs/h1_fontsize.png "h1_fontsize")
+
+La taille de la police calculée par le navigateur est donc `18 * 3.2 = 57.6px`.
+
+> Si vous voulez baser les tailles de certains éléments sur la taille "initiale" du navigateur, c'est-à-dire 16px, il est possible d'utiliser `rem` à la place de `em`. Le `r` signifie `root`, donc on dit au navigateur de baser son calcul sur la taille racine
