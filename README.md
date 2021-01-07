@@ -25,7 +25,7 @@ Il existe également des balises **auto fermantes**. Elles n'ont pas de tag de f
 
 ## Retours à la ligne
 
->Les retours à la ligne écrits dans le code n'ont aucun effet sur l'affichage dans le navigateur. Utilisez la balise `<br />` pour effectuer un retour à la ligne. Nous verrons également plus tard comment styliser des éléments pour paramétrer la marge supérieure, inférieure, l'espacement, etc...
+> Les retours à la ligne écrits dans le code n'ont aucun effet sur l'affichage dans le navigateur. Utilisez la balise `<br />` pour effectuer un retour à la ligne. Nous verrons également plus tard comment styliser des éléments pour paramétrer la marge supérieure, inférieure, l'espacement, etc...
 
 ## Attributs de balises HTML
 
@@ -33,20 +33,24 @@ Une balise ouvrante peut avoir un ou plusieurs attributs. On renseignera le nom 
 
 ```html
 <!-- Ici on définit un attribut "lang" qui a pour valeur "fr" -->
-<html lang="fr">...</html>
+<html lang="fr">
+  ...
+</html>
 ```
 
 ## Les balises `head` et `body`
 
 La balise `head` définit les métadonnées sur le document HTML. On va définir un titre, des imports de CSS, de JS, de polices de caractères (fonts), le jeu de caractères utilisé dans la page, etc…
 
->head est obligatoire.
+> head est obligatoire.
 
 La balise `body` contient le corps de la page : ce qui est affiché à l’écran, dans le navigateur. C’est le contenu de notre page : titre(s), menu, sections, etc…
 
->body est obligatoire.
+> body est obligatoire.
+
 ---
->Les balises `head` et `body` sont les enfants directs de la balise racine `html`
+
+> Les balises `head` et `body` sont les enfants directs de la balise racine `html`
 
 ## Images
 
@@ -78,7 +82,7 @@ Exemple :
 </nav>
 ```
 
->On peut avoir plusieurs balises `nav` dans un document HTML
+> On peut avoir plusieurs balises `nav` dans un document HTML
 
 ## ul & ol
 
@@ -102,7 +106,7 @@ Une balise de liste contient **forcément** des **éléments de liste**, ou enco
 </ol>
 ```
 
->Par défaut, à l'affichage, une liste non ordonnée affichera chaque élément précédé d'un point noir, alors qu'une liste ordonnée affichera chaque élément précédé du chiffre représentant sa position dans la liste
+> Par défaut, à l'affichage, une liste non ordonnée affichera chaque élément précédé d'un point noir, alors qu'une liste ordonnée affichera chaque élément précédé du chiffre représentant sa position dans la liste
 
 Pour structurer notre menu, on peut inclure dans la balise `nav` une liste non ordonnée, `ul` (unordered list) :
 
@@ -140,14 +144,12 @@ On utilisera, dans un premier temps, 2 attributs dans la balise `a` :
 </a>
 
 <!-- Ce lien relatif amènera sur une autre page du site, dans le même onglet -->
-<a href="produits.html">
-  Produits
-</a>
+<a href="produits.html"> Produits </a>
 
 <!-- ... -->
 ```
 
->Le contenu affiché à l'écran se trouve entre le tag d'ouverture et le tag de fermeture
+> Le contenu affiché à l'écran se trouve entre le tag d'ouverture et le tag de fermeture
 
 ## CSS
 
@@ -157,7 +159,7 @@ Le langage CSS nous permet, quant à lui, de **changer l'apparence** de tout ou 
 
 Par exemple : changer la couleur de la police, de l'arrière-plan, ajouter des bordures, créer des animations, etc...
 
->**En CSS, nous allons donc cibler des éléments HTML et les styliser avec des règles CSS**
+> **En CSS, nous allons donc cibler des éléments HTML et les styliser avec des règles CSS**
 
 ### Position de la feuille de style CSS
 
@@ -184,7 +186,8 @@ Si je souhaite écrire des commentaires, les encadre par `/*` et `*/`.
 /*
 Ceci est un commentaire, qui me permet d'inscrire directement dans le code du contenu lisible par n'importe qui
 */
-body { /* <-- "body" est un sélecteur */
+body {
+  /* <-- "body" est un sélecteur */
   font-weight: 400; /* <-- "font-weight" est une règle */
   font-family: sans-serif; /* <-- "font-family" est une règle */
 }
@@ -198,13 +201,13 @@ Si vous souhaitez consulter la liste des sélecteurs CSS, vous pouvez cliquez [i
 
 Ci-dessous, un tableau qui sera mis à jour régulièrement, contenant le résumé des sélecteurs vus en cours :
 
-|Sélecteur|Description|
-|---|---|
-|`balise`|Sélectionne tous les éléments qui sont des balises HTML ayant ce nom|
-|`#id`|Sélectionne l'élément ayant un attribut `id`|
-|`element1 element2`|Sélectionne tous les éléments `element2` étant quelque part dans les enfants de l'élément `element1`|
-|`elem1, elem2`|Sélectionne l'`elem1` et l'`elem2` pour leur appliquer les mêmes règles|
-|`.maClasse`|Sélectionne les éléments ayant la classe `maClasse`|
+| Sélecteur           | Description                                                                                          |
+| ------------------- | ---------------------------------------------------------------------------------------------------- |
+| `balise`            | Sélectionne tous les éléments qui sont des balises HTML ayant ce nom                                 |
+| `#id`               | Sélectionne l'élément ayant un attribut `id`                                                         |
+| `element1 element2` | Sélectionne tous les éléments `element2` étant quelque part dans les enfants de l'élément `element1` |
+| `elem1, elem2`      | Sélectionne l'`elem1` et l'`elem2` pour leur appliquer les mêmes règles                              |
+| `.maClasse`         | Sélectionne les éléments ayant la classe `maClasse`                                                  |
 
 #### Sélectionner une balise HTML
 
@@ -212,7 +215,7 @@ En CSS, il est possible de sélectionner une balise HTML directement.
 
 Par "élément HTML", nous entendons toute balise **standard** telle qu'on va pouvoir les utiliser dans la structure de notre page (`p`, `body`, `img`, etc...).
 
->Pour sélectionner un élément HTML et lui appliquer des styles, il suffit d'indiquer son nom
+> Pour sélectionner un élément HTML et lui appliquer des styles, il suffit d'indiquer son nom
 
 ```css
 p {
@@ -226,7 +229,7 @@ Nous avons vu qu'en HTML, il était possible d'ajouter un attribut `id` à n'imp
 
 Cet `id` peut nous permettre de cibler précisément un élément dans la page en CSS.
 
->Il suffit de reprendre son nom, et de le préfixer par `#`
+> Il suffit de reprendre son nom, et de le préfixer par `#`
 
 HTML :
 
@@ -248,7 +251,7 @@ HTML :
 
 Il est possible de vouloir sélectionner un élément se trouvant être un enfant d'un autre élément, sans forcément vouloir passer par un ID.
 
->Dans ce cas, on peut indiquer le sélecteur du parent et le sélecteur de l'enfant, séparés par un espace
+> Dans ce cas, on peut indiquer le sélecteur du parent et le sélecteur de l'enfant, séparés par un espace
 
 ```css
 /*
@@ -267,7 +270,8 @@ On peut vouloir appliquer la même règle à plusieurs types d'éléments. Dans 
 /*
 Ici, on passe les titres de premier ET de second niveau en majuscules. On peut utiliser n'importe quel sélecteur, pas que des balises HTML
 */
-h1, h2 {
+h1,
+h2 {
   text-transform: uppercase;
 }
 ```
@@ -293,19 +297,13 @@ Par exemple, si je souhaite pouvoir styliser certains paragraphes de ma page com
 > Application dans la page HTML
 
 ```html
-<p>
-  Lorem ipsum dolor sit, amet consectetur adipisicing...
-</p>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing...</p>
 <p class="quote">
-  Tempora accusantium necessitatibus provident perspiciatis, laborum iure
-  qui deserunt distinctio. Necessitatibus, numquam inventore
+  Tempora accusantium necessitatibus provident perspiciatis, laborum iure qui
+  deserunt distinctio. Necessitatibus, numquam inventore
 </p>
-<p>
-  Consequatur excepturi, adipisci, iure autem reiciendis ad asperiores
-</p>
-<p class="quote">
-  lorem
-</p>
+<p>Consequatur excepturi, adipisci, iure autem reiciendis ad asperiores</p>
+<p class="quote">lorem</p>
 ```
 
 Tous les éléments ayant la classe "quote" verront le style de la classe appliqué :
@@ -344,26 +342,16 @@ Si je souhaite créer un nouveau type de citation qui a une couleur de bordure d
 Ensuite, je peux appliquer ces styles sur les éléments HTML voulus :
 
 ```html
-<p>
-  Lorem ipsum dolor sit
-</p>
+<p>Lorem ipsum dolor sit</p>
 <!-- J'inscris plusieurs classes -->
-<p class="quote quote-blue">
-  Tempora accusantium necessitatibus
-</p>
+<p class="quote quote-blue">Tempora accusantium necessitatibus</p>
+<p>Consequatur excepturi</p>
+<p class="quote quote-red">Nobis iusto, debitis voluptates</p>
 <p>
-  Consequatur excepturi
+  Ad, aliquam aspernatur quos rerum iste non numquam tenetur quae dignissimos
+  voluptatem cumque doloribus corrupti sequi unde eaque ullam!
 </p>
-<p class="quote quote-red">
-  Nobis iusto, debitis voluptates
-</p>
-<p>
-  Ad, aliquam aspernatur quos rerum iste non numquam tenetur quae
-  dignissimos voluptatem cumque doloribus corrupti sequi unde eaque ullam!
-</p>
-<p class="quote">
-  Ad, aliquam aspernatur
-</p>
+<p class="quote">Ad, aliquam aspernatur</p>
 ```
 
 ![Quote class 2](docs/quote_class_2.png "Quote class 2")
@@ -604,3 +592,86 @@ Ainsi :
 La taille de la police calculée par le navigateur est donc `18 * 3.2 = 57.6px`.
 
 > Si vous voulez baser les tailles de certains éléments sur la taille "initiale" du navigateur, c'est-à-dire 16px, il est possible d'utiliser `rem` à la place de `em`. Le `r` signifie `root`, donc on dit au navigateur de baser son calcul sur la taille racine
+
+## Les formulaires
+
+La balise de formulaire en HTML est `<form></form>`.
+
+Entre ces balises, vous allez pouvoir intégrer différents champs de formulaire.
+
+Egalement, on pourra accompagner les champs d'un formulaire de libellés.
+
+### Champs de formulaire
+
+La balise principalement utilisée pour afficher un champ de formulaire est la balise `<input />` (auto-fermante).
+
+A l'aide de l'attribut `type`, on peut indiquer au navigateur le type de données attendu. Par exemple `text`, `email`, `password`, etc...
+
+```html
+<form>
+  <input type="text" />
+  <input type="email" />
+</form>
+```
+
+> Dans Visual Studio Code, l'autocomplétion devrait suggérer tous les types disponibles automatiquement à l'ouverture des guillemets derrière l'attribut `type`
+
+Si on veut afficher une zone de texte plus grande, pour saisir un message ayant davantage de contenu qu'un simple nom ou prénom par exemple, on peut utiliser la balise `<textarea></textarea>`.
+
+Dans ce cas, on pourra également spécifier un nombre de colonnes et un nombre de lignes pour afficher une zone plus ou moins grande/large.
+
+#### Boutons
+
+Pour valider un formulaire, il nous faut un bouton.
+
+Pour afficher un bouton de soumission dans notre page, on a 2 options :
+
+- `input` avec type submit
+- `button` avec type submit
+
+```html
+<form>
+  <input type="text" />
+  <input type="email" />
+  <!-- ... -->
+  <!-- Avec input : libellé du bouton dans l'attribut 'value' -->
+  <input type="submit" value="Valider" />
+  <!-- Avec button : libellé du bouton entre les balises ouvrante et fermante -->
+  <button type="submit">Valider</button>
+</form>
+```
+
+> Dans les 2 cas, on voit bien qu'il est nécessaire de spécifier le type du bouton
+
+---
+
+> On rappelle que la balise `input` est autofermante, tandis que la balise `button` est double
+
+### Libellés
+
+Un champ seul ne sert pas à grand-chose. Il est préférable d'indiquer à l'utilisateur la donnée concernée pour chaque champ.
+
+On peut utiliser les libellés pour cela, à l'aide de la balise `<label></label>`
+.
+
+Un libellé est défini **pour** un champ de formulaire avec l'attribut `for`. La valeur de cet attribut désigne un **id** de champ de formulaire :
+
+```html
+<!-- Le libellé désigne "nomInput", ID du champ nom -->
+<form>
+  <label for="nomInput">Nom :</label>
+  <input type="text" id="nomInput" />
+</form>
+```
+
+### Styles
+
+Pour enlever le rectangle noir qui s'affiche autour d'un élément quand on clique dessus, on peut utiliser la règle CSS `outline` et fixer sa valeur à `none` :
+
+```css
+input,
+textarea,
+button {
+  outline: none;
+}
+```
