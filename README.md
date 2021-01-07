@@ -675,3 +675,129 @@ button {
   outline: none;
 }
 ```
+
+## Pseudo-classes
+
+Chaque élément dispose de **pseudo-classes**.
+
+Chaque pseudo-classe est appliquée sur l'élément dans un contexte particulier.
+
+Exemple : la pseudo-classe `hover` est appliquée sur un élément quand on passe la souris dessus.
+
+On peut donc décider de styliser notre élément différemment en fonction du contexte.
+
+Syntaxe : `selecteur:hover {}`
+
+```css
+/* Au passage de la souris sur un button, l'arrière-plan deviendra blanc */
+button:hover {
+  background-color: #fff;
+}
+```
+
+> On peut aussi utiliser la pseudo-classe `active` pour styliser un élément quand on est en train de cliquer dessus (et que le clic n'a pas encore été relâché)
+
+## Transitions
+
+On peut allier l'utilisation des pseudo-classes à celle des **transitions**.
+
+Les transitions permettent de passer d'un état à un autre (exemple, l'arrière-plan de notre `button:hover` un peu plus haut), mais de manière fluide.
+
+Pour ça, on va utiliser la règle CSS `transition`, avec la syntaxe suivante :
+
+```css
+button {
+  /*
+  Syntaxe :
+  - propriété sur laquelle appliquer la transition
+  - durée (en secondes (s) ou millisecondes (ms))
+  - type de transition
+  */
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #fff;
+}
+```
+
+Ainsi, le passage d'un état à un autre se fait de manière fluide.
+
+> Pour appliquer une transition sur toutes les propriétés de l'élément, utiliser `all` en tant que nom de propriété
+
+## Les éléments inline & block
+
+Un élément HTML possède un positionnement dans la page, nous l'avons vu précédemment.
+
+Il possède également un type d'affichage : `inline`, `block` ou `inline-block`.
+
+### Les éléments block
+
+Un élément block se situera sur une nouvelle ligne à l'écran, et occupera tout l'espace horizontal disponible. Il va donc repousser la balise qui suit sur une nouvelle ligne
+
+Exemple : `div`, `p`, `form`...
+
+### Les éléments inline
+
+Un élément inline, quant à lui, ne s'affiche pas nécessairement sur une nouvelle ligne (à moins qu'il y soit poussé par un élément `block` qui le précède). Par ailleurs, il va occuper seulement l'espace horizontal nécessaire à son affichage.
+
+Exemple : `a`, `img`...
+
+> Il existe aussi des éléments de type `inline-block`. Pour l'instant nous les retiendrons essentiellement comme des éléments de type inline
+
+## Responsive Web Design (RWD)
+
+Il est aujourd'hui nécessaire qu'un site web puisse s'afficher correctement sur n'importe quel type de terminal (ordinateur, tablette, téléphone, etc...).
+
+En CSS, il est possible de définir des règles d'affichage spécifique en fonction du terminal et d'autres règles.
+
+> Le plus couramment, nous allons définir des règles d'affichage pour les terminaux disposant d'écrans, et pour une règle concernant une largeur maximale
+
+Ceci nous permet donc d'affiner l'affichage de notre site en fonction du terminal sur lequel il est consulté.
+
+Mais au préalable, il est nécessaire de spécifier le **viewport**.
+
+### viewport
+
+Le viewport permet d'indiquer au navigateur la largeur à appliquer et le niveau de zoom initial.
+
+On le spécifie grâce à une balise `meta` dans le `head` de la page :
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+Grâce à cette balise, on peut déjà régler pas mal de problème d'affichage.
+
+Cependant, il peut être nécessaire d'affiner et ajuster nos styles selon certains cas.
+
+Pour effectuer ces ajustements, on va utiliser des **media queries**.
+
+### Media queries
+
+Les media queries sont l'outil qui nous permet de déclarer des règles spécifiques suivant le contexte.
+
+Syntaxe : `@media [type de media] [critere(s)] {}`
+
+> Entre les accolades, on va définir ou redéfinir les règles nécessaires à un affichage correct pour le contexte ciblé. **On définit ou redéfinit donc des règles CSS à l'intérieur d'une media query**
+
+```css
+/* On cible les terminaux disposant d'un écran et ayant une largeur inférieure à 450px */
+@media screen and (max-width: 450px) {
+  /* On passe la taille des titres de premier niveau à 3.5em */
+  h1 {
+    font-size: 3.5em;
+  }
+
+  /*
+  On ajoute des marges extérieures de 15px, sur les côtés,
+  pour éviter que les contenus soient collés au bor de l'écran
+  */
+  #content {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+```
+
+> On peut donc déclarer plusieurs media queries dans un document CSS, pour adapter au "cas par cas" l'affichage voulu
